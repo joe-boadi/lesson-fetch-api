@@ -29,7 +29,10 @@ function App() {
     axios.get<{products: Product[]}>('https://dummyjson.com/docs/products')
     .then((res) => {
       setProducts(res.data.products);
-      console.log(setProducts)
+
+      // Verify data is valid
+      console.log(setProducts.length, res.data.products[0]);
+    
     }).catch( err => { 
         console.error(err)
         setLoading(false)
@@ -43,13 +46,15 @@ function App() {
   return (
     <>
       <div>
-        {products.map((product, index) => (
+        {products.length > 0 ? (products.map( (product, index) => (
           <div key={product.id}>
             <h2>{product.title}</h2>
             <img src={product.images[index]} alt={product.title} />
             <p>{product.price}</p>
-          </div>
-        ))}
+          </div>)
+        )) : (
+          <div>No products found...</div>
+        )}
       </div>
     </>
   )
