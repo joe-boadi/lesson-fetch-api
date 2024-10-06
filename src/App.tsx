@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 
-// Interface for the project structure.
+// Interface for the data structure.
 interface Product {
   id: number;
   title: string;
@@ -22,10 +22,6 @@ function App() {
   const [error, setError ] = useState<string | null>(null);
 
   useEffect(() => {
-
-    // https://dummyjson.com/docs/products
-    // ./database/product.json
-
     axios.get<{products: Product[]}>('https://dummyjson.com/docs/products')
     .then((res) => {
       setProducts(res.data.products);
@@ -44,10 +40,9 @@ function App() {
   if(error) return <div>Error: {error}</div>
 
   return (
-    <>
       <div>
         {products.length > 0 ? (products.map( (product, index) => (
-          <div key={product.id}>
+          <div key={index}>
             <h2>{product.title}</h2>
             <img src={product.images[index]} alt={product.title} />
             <p>{product.price}</p>
@@ -56,7 +51,6 @@ function App() {
           <div>No products found...</div>
         )}
       </div>
-    </>
   )
 }
 
