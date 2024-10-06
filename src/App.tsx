@@ -31,12 +31,12 @@ function App() {
       setProducts(res.data.products);
 
       // Verify data is valid
-      console.log(setProducts.length, res.data.products[0]);
+      console.log(setProducts.length, res.data.products);
     
     }).catch( err => { 
         console.error(err)
         setLoading(false)
-        setError("Failed to fetch products")
+        setError("Failed to fetch products") // TODO: FIXME: error message (Rectify data fetch)
       });
   }, [])
 
