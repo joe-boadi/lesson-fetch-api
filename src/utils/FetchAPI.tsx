@@ -19,9 +19,11 @@ function Products () {
 
   const fetchApiResponse = async () => {
     try {
+      // ./database/product
       // https://dummyjson.com/products
-      const res = await axios.get('./database/product');
+      const res = await axios.get('https://dummyjson.com/products');
         setProducts(res.data.products);
+        console.log(res.data.products);
 
     } catch (err) { 
           console.error(err)
