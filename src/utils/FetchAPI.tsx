@@ -1,10 +1,20 @@
 import { useState } from 'react'
 import axios from 'axios'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+// import style from '@/styles/fetchAPI.module.css'
+
 // Interface for the data structure.
 interface Product {
   id: number;
   title: string;
-  images: string;
+  images: string[];
   price: number;
   description: string;
   category: string;
@@ -40,13 +50,25 @@ function Products () {
   if(error) return <div>Error fetching data</div>
 
   return (
-    <div>
+    <div className=''>
       {products.map((product, index) => (
-        <div key={index}>
-          <img src={product.images} alt={product.title} />
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-        </div>
+       <Card key={product.id} className='grid grid-cols-4 gap-4 p-4'>
+          <CardHeader>
+            <img src={product.images[0]} alt={product.title} />
+            <CardTitle>{product.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CardDescription>{product.description}</CardDescription>
+            <p>Price: ${product.price}</p>
+            <p>Rating: {product.rating}</p>
+          </CardContent>
+          <CardFooter>
+            <p>Reviews: {product.reviews}</p>
+          </CardFooter>
+          {/*Add a horizontal rule every second product card for better readability.*/}
+          {index % 2 === 0 && <hr />}         
+          {/* Add other styles or features as needed */}
+       </Card>
       ))}
     </div>
   )
