@@ -10,12 +10,16 @@ import {
 } from "@/components/ui/card";
 import UseLoadingStateSkeleton from '@/components/hooks/Loading';
 import UseErrorLoading  from '@/components/hooks/ErrorLoading';
+import styles from '@/styles/FetchAPI.module.css'
+import Button from '@/styles/Button.module.css';
+import { IoAdd } from 'react-icons/io5';
 
 // Interface for the data structure.
 interface Product {
   id: number;
   title: string;
   images: string[];
+  thumbnail: string;
   price: number;
   description: string;
   category: string;
@@ -51,10 +55,10 @@ function Products () {
   if(error) return < UseErrorLoading />;
 
   return (
-    <>
+    <div className={`${styles.container} grid-rows-4`}>
       {products.map((product, index) => (
-        <Suspense key={product.id} fallback={loading}>
-          <Card className='grid grid-cols-4 gap-4 p-4'>
+        <Suspense key={product.id}  fallback={loading}>
+          <Card className={`${styles.card}`}>
             <CardHeader>
               <img src={product.images[0]} alt={product.title} width={210}/>
               <CardTitle>{product.title}</CardTitle>
@@ -64,15 +68,16 @@ function Products () {
               <p>Price: ${product.price.toFixed(2)}</p>
               <p>Rating: {product.rating}</p>
             </CardContent>
-            {/* You can include the id if you want it displayed */}
-            <CardFooter>
-              <p>Product ID: {product.id}</p>
+            <CardFooter className={`${styles.thumbnail}`}>
+              {/* <img src={product.thumbnail} alt='thumbnail'/> */}
+              <button className={`${Button.buyBtn}`}>Add<IoAdd /></button>
             </CardFooter>
             {index % 2 === 0 && <hr />}
           </Card>
         </Suspense>
       ))}
-  </>
+  </div>
   )
 };
+
 export default Products;
