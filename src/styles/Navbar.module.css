@@ -1,0 +1,28 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    margin: auto 0;
+    background-color: #083b08;
+    text-align: center;
+}
+
+.Navbar > li > a{  
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+    padding: 1rem;
+}
+
+.HomeIcon{
+    width: 90px;
+    height: 45px;
+    font-size: larger;
+
+}
+
+.cartIcon {
+    width: 70px;
+    height: 45px;
+}
