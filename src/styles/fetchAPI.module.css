@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container{
+    display: flex;
+    grid-template-columns: repeat( 4, minmax( 0, 1fr) );
+    grid-template-rows: repeat(4, minmax( 0, 1fr));
+    padding: 1rem;
+    margin: 7px;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.card {
+    text-align: center;
+    background-color: #daf7da;
+    border-radius: 8px;
+    width: 200px;
+    padding: 7px;
+
+}
+
+.thumbnail {
+    border-radius: 50%;
+    width: 70px;
+}

@@ -1,0 +1,30 @@
+.button {
+    padding:4px 8px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    max-width: 90px;
+    max-height: 45px;
+}
+
+.buyBtn {
+    background-color: #4CAF50;
+    color: white;
+    max-width: 90px;
+    max-height: 45px;
+    font-style: italic;
+    font-size: small;
+    margin: 4px;
+    
+    &:hover{
+        outline: none;
+        transition: background-color 0.3s;
+        border-color: none;
+        background-color: #2fba2f;
+    }
+}
